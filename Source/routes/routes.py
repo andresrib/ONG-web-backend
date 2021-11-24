@@ -5,6 +5,7 @@ from pathlib import Path
 sys.path.append(os.path.abspath(Path(os.getcwd()) / ".." ))
 from routes.user import user_router
 from routes.login import login_router
+from routes.ong import ong_router
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -29,4 +30,5 @@ async def root():
 
 app.include_router(user_router, tags=["user"])
 app.include_router(login_router, tags=["login"])
+app.include_router(ong_router, tags=["ong"])
 
