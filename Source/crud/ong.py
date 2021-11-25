@@ -49,15 +49,17 @@ def retrieve_ong(db: Session, id: str or None):
 
 
 def retrieve_ong_by_user(db: Session, id: str):
-    print(id)
     try:
+        ong_retorno = []
         ong = db.query(OngModel, UserModel).filter(OngModel.ong_id == UserModel.ong_id).filter(UserModel.user_id == id).all()
+        for o in ong:
+            ong_retorno.append(o.OngModel)
         status = True
     except:
         ong = []
         logging.exception("ErrorGettingData")
         status = False
-    return {"ong": ong, "status": status}
+    return {"ong": ong_retorno, "status": status}
 
 def update_ong(db: Session, ong: OngPost, id: str):
     try:

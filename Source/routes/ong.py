@@ -22,7 +22,7 @@ async def create_ong(
     user = await retrieve_login_information(db, email)
     return insert_ong(db, ong, user.user_id)
 
-@ong_router.get("/ong")
+@ong_router.get("/ong/{id}")
 async def get_ong(
     id: str,
     db: Session = Depends(get_db),
@@ -34,7 +34,7 @@ async def get_ong(
         return retrieve_ong_by_user(db, user.user_id)
     return retrieve_ong(db, id)
 
-@ong_router.put("/ong")
+@ong_router.put("/ong/{id}")
 async def put_ong(
     ong: OngPost,
     id: str,

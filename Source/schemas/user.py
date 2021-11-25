@@ -19,6 +19,25 @@ class UserPost(BaseModel):
             }
         }
 
+class UserPut(BaseModel):
+    email: EmailStr
+    name: str
+    password: str
+    cellphone: str
+
+
+    class Config:
+        orm_mode = True
+        schema_extra = {
+            "example": {
+                "id": "uuid4",
+                "email": "andre@gmail.com",
+                "name": "andre",
+                "password": "ong123",
+                "cellphone": "32485284"
+            }
+        }
+
 class Login(BaseModel):
     email: EmailStr
     password: str
