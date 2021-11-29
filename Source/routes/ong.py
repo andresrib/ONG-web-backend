@@ -34,7 +34,7 @@ async def get_ong(
         return retrieve_ong_by_user(db, user.user_id)
     return retrieve_ong(db, id)
 
-@ong_router.put("/ong/{id}")
+@ong_router.post("/ong/update/{id}")
 async def put_ong(
     ong: OngPost,
     id: str,
