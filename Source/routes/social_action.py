@@ -38,7 +38,7 @@ async def get_action_by_ong(
 ):
     return retrieve_social_action_by_ong(db, id)
 
-@action_router.put("/action/{id}")
+@action_router.post("/action/update/{id}")
 async def put_action(
     action: SocialActionPost,
     id: str,
