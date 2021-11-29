@@ -20,7 +20,7 @@ async def create_action(
 ):
     email = await get_current_user_from_token(token)
     user = await retrieve_login_information(db, email)
-    return insert_social_action(db, action, user.user_id)
+    return insert_social_action(db, action)
 
 @action_router.get("/action/{id}")
 async def get_action(
@@ -31,7 +31,7 @@ async def get_action(
     return retrieve_social_action(db, id)
 
 @action_router.get("/ong/action/{id}")
-async def get_action(
+async def get_action_by_ong(
     id: str,
     db: Session = Depends(get_db),
     token: str = Depends(oauth2_scheme)

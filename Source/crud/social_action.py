@@ -57,7 +57,7 @@ def retrieve_social_action_by_ong(db: Session, id: str):
 
 def update_social_action(db: Session, social_action: SocialActionPost, id: str):
     try:
-        db.query(SocialActionModel).filter(SocialActionModel.case_id==id).update({"name": social_action.name, "goal": social_action.goal, "city": social_action.city, "description": social_action.description, "current_money": social_action.current_money, "ong_id": social_action.ong_id})
+        db.query(SocialActionModel).filter(SocialActionModel.case_id==id).update({"name": social_action.name, "goal": social_action.goal, "description": social_action.description, "current_money": social_action.current_money, "ong_id": social_action.ong_id})
         db.commit()
         status = True
     except:
