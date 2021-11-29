@@ -42,7 +42,7 @@ def insert_user(db: Session, user: UserPost):
 def update_user(db: Session, id: str, user: UserPost):
     try:
         password = get_password_hash(user.password)
-        db.query(UserModel).filter(UserModel.user_id==id).update({"name": user.name, "email": user.email, "cellphone": user.cellphone, "password": password})
+        db.query(UserModel).filter_by(user_id=id).update({"name": user.name, "email": user.email, "cellphone": user.cellphone, "password": password})
         db.commit()
         status = True
     except:

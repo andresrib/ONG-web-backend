@@ -22,7 +22,7 @@ async def create_user(
 
 @user_router.post("/user/update/{id}")
 async def put_user(
-    user: UserPut,
+    user: UserPost,
     id: str,
     token: str = Depends(oauth2_scheme),
     db: Session = Depends(get_db)
