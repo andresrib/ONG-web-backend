@@ -6,6 +6,7 @@ sys.path.append(os.path.abspath(Path(os.getcwd()) / ".." ))
 from routes.user import user_router
 from routes.login import login_router
 from routes.ong import ong_router
+from routes.social_action import action_router
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
