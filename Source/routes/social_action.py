@@ -47,7 +47,7 @@ async def put_action(
 ): 
     return update_social_action(db, action, id)
 
-@action_router.delete("/action/{id}")
+@action_router.delete("/action")
 async def dlt_action(
     id: str,
     db: Session = Depends(get_db),

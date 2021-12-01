@@ -51,9 +51,17 @@ def update_user(db: Session, id: str, user: UserPost):
 
 def retrieve_users(db: Session, id: str):
     try:
-        user = db.query(UserModel).filter_by(user_id=id).first()
-        if user.ong_id:
+        base_user = db.query(UserModel).filter_by(user_id=id).first()
+        if base_user.ong_id:
             user = db.query(UserModel, OngModel).filter(UserModel.ong_id == OngModel.ong_id).filter_by(user_id=id).first()
+        else:
+            user = {"UserModel": base_user, "OngModel": {
+            "name": "",
+            "city": "",
+            "phone": "",
+            "ong_id": "",
+            "state": ""
+            }}
         status = True
     except:
         logging.exception("teste")
